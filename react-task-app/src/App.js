@@ -1,13 +1,13 @@
 import React from 'react';
 import AuthContainer from './AuthContainer'
-import LoginContainer from './LoginContainer'
+import LoginUser from './LoginUser'
+
 
 class App extends React.Component {
   constructor(props){
     super(props)
     this.state={
       loggedIn: false,
-      loggedInEmail: null // will using password as the key be problematic? 
     }
   }
 
@@ -25,6 +25,7 @@ login = async (log) => {
         'Content-Type': 'application/json'
       }
     })
+    console.table(loginResponse);
     const loginJson = await loginResponse.json()
     if (loginResponse === 200) { 
       this.setState({
@@ -62,10 +63,14 @@ register = async (reg) => {
   }
 }
   render(){
+      console.log();
     return (
       <div className="App">
-       <AuthContainer register={this.register}/>
-       <LoginContainer login={this.login}/>
+
+
+        <AuthContainer login={this.login} register={this.register}/> 
+
+
       </div>
     )
   }  

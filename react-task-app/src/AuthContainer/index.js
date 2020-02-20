@@ -1,57 +1,23 @@
 import React from 'react'
+import LoginUser from '../LoginUser'
+import RegisterUser from '../RegisterUser'
 
 class AuthContainer extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			username: '', 
-			email: '',
-			password: ''
+			displayPage: 'login'	
 		}
 	}
-handleChange = (event) => {
-	this.setState({
-	// computed property
-      [event.target.name]: event.target.value
-
-	})
-}
-handleSubmit = (event) => {//how do I get this 
-	event.preventDefault()
-	console.table("This is handleSubmit");
-	this.props.register(this.state)//define this ƒ in App.js
-}
 render(){
 	console.table(this.state)
 	return(
 		<React.Fragment>
-			<form onSubmit={this.handleSubmit}>
-				<div>
-					<input 
-					type="text" 
-					name="username"
-					value={this.state.username}
-					onChange={this.handleChange}
-					placeholder="username"/>
-				</div>
-				<div>
-					<input 
-					type="text" 
-					name="email"
-					value={this.state.email}
-					onChange={this.handleChange}
-					placeholder="email"/>
-				</div>
-				<div>
-					<input 
-					type="password" 
-					name="password"
-					value={this.state.password}
-					onChange={this.handleChange}
-					placeholder="password"/>
-				</div>
-				<button>Submit</button>
-			</form>
+				{	
+					this.displayPage ?
+		        	<RegisterUser register={this.props.register}/> :
+		        	<LoginUser login={this.props.login}/> 
+				}
 		</React.Fragment>
 		)
 	}
