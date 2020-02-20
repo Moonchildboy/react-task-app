@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginUser from '../LoginUser'
+import LoginContainer from '../LoginContainer'
 import RegisterUser from '../RegisterUser'
 
 class AuthContainer extends React.Component {
@@ -16,7 +16,7 @@ render(){
 				{	
 					this.displayPage ?
 		        	<RegisterUser register={this.props.register}/> :
-		        	<LoginUser login={this.props.login}/> 
+		        	<LoginContainer login={this.props.login}/> 
 				}
 		</React.Fragment>
 		)

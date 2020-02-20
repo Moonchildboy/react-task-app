@@ -2,11 +2,9 @@ import React from 'react'
 
 function RegisterUser (props) {
 
-	// const users = props.
-
 return(
 		<React.Fragment>
-			<form>
+			<form onSubmit={props.register}>
 				<div>
 					<input 
 					type="text" 

@@ -1,10 +1,22 @@
 import React from 'react'
 
-function LoginUser(props) {
-	console.log(props.login);
+class LoginContainer extends React.Component {
+	constructor(props){
+		super(props)
+		this.state = {
+		}
+	}
+
+	handleSubmit = (event) => {
+		event.preventDefault() // ?
+		this.props.login()
+	}
+
+
+	render(){	
 		return(
 			<div>
-				<form onSubmit={props.login}>
+				<form onSubmit={this.handleSubmit}>
 					<input
 						type="text" 
 						name="username"  
@@ -24,6 +36,7 @@ function LoginUser(props) {
 				</form>
 			</div>
 		)
-	
+	}	
+
 }
-export default LoginUser
+export default LoginContainer

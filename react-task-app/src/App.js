@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthContainer from './AuthContainer'
-import LoginUser from './LoginUser'
+import LoginContainer from './LoginContainer'
 
 
 class App extends React.Component {
@@ -25,7 +25,8 @@ login = async (log) => {
         'Content-Type': 'application/json'
       }
     })
-    console.table(loginResponse);
+    console.log("this is the server res",loginResponse);
+
     const loginJson = await loginResponse.json()
     if (loginResponse === 200) { 
       this.setState({
@@ -33,6 +34,8 @@ login = async (log) => {
           loggedInEmail: loginJson.data.email
         })
     }
+    console.log("this is the Json res",loginJson);
+
   } catch (err){
       if (err) {
         console.error(err);
