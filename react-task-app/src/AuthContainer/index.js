@@ -11,6 +11,7 @@ class AuthContainer extends React.Component {
 	}
 handleChange = (event) => {
 	this.setState({
+	// computed property
       [event.target.name]: event.target.value
 
 	})
