@@ -1,4 +1,4 @@
-from React import 'react'
+import React from 'react'
 
 function NewTaskContainer() {
 	return (

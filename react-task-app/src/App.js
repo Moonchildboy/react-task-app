@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthContainer from './AuthContainer'
 import LoginContainer from './LoginContainer'
+import NewTaskContainer from './NewTaskContainer'
 
 
 class App extends React.Component {
@@ -45,6 +46,7 @@ login = async (log) => {
 
 register = async (reg) => {
 
+  console.log("this is the register body", reg);
   const url = process.env.REACT_APP_API_URL + '/api/v1/users/register'
   // const url = 'http://localhost:8000/api/v1/users/register'
   try {
@@ -56,7 +58,6 @@ register = async (reg) => {
         'Content-Type': 'application/json'
       }
     })
-
     const registerJson = await registerResponse.json()
   
   } catch (err){
@@ -72,8 +73,8 @@ register = async (reg) => {
 
 
         <AuthContainer login={this.login} register={this.register}/> 
-
-
+        
+        <NewTaskContainer />
       </div>
     )
   }  
