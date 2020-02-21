@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.taskDiv{
+  border: 2px solid orangered;
+  border-radius: 20px;
+  margin: 3px;
+}

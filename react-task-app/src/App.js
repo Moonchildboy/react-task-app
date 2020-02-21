@@ -1,7 +1,8 @@
 import React from 'react';
+import './App.css'
 import AuthContainer from './AuthContainer'
 import LoginContainer from './LoginContainer'
-import NewTaskContainer from './NewTaskContainer'
+import TaskContainer from './TaskContainer'
 
 
 class App extends React.Component {
@@ -66,15 +67,17 @@ register = async (reg) => {
     }
   }
 }
+
+
+
   render(){
       console.log();
     return (
       <div className="App">
 
+        <AuthContainer login={this.login} register={this.register}/>  
+        <TaskContainer /> 
 
-        <AuthContainer login={this.login} register={this.register}/> 
-        
-        <NewTaskContainer />
       </div>
     )
   }  
