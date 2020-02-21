@@ -1,6 +1,7 @@
 import React from 'react'
 
 function ListTasks (props) {
+	console.log(props);
 	const allTask = props.taskList.map((task) => {
 		return (
 					<div className="taskDiv" key={task.id}>
@@ -13,7 +14,7 @@ function ListTasks (props) {
 						<li>
 							{task.status}
 						</li>
-						<button>edit</button>
+						<button onClick={() => props.editTask(task.id)}>edit</button>
 						<button onClick={() => props.deleteTask(task.id)}>delete</button>
 					</div>
 			)

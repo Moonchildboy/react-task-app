@@ -1,5 +1,7 @@
 import React from 'react'
 import ListTask from '../ListTask'
+import EditContainer from '../EditContainer'
+
 
 class NewTaskContainer extends React.Component {
 	constructor(props){
@@ -8,6 +10,11 @@ class NewTaskContainer extends React.Component {
 			title:'',
 			supporting_action:'',
 			status: 'in progress',
+			idOFTaskToEdit:0,
+			edit: {
+				title:'',
+				supporting_action:''
+			},
 			taskList:[]
 		}
 	}
@@ -86,6 +93,12 @@ deleteTask = async (id) => {
 			console.error(err);
 	}
 }
+editTask = (id) => {
+	const edit = this.state.taskList.find((task) => task.id === id) //
+	this.setState({
+		edit:{...edit}
+	})
+}
 
 render(){	
 	return (
@@ -107,7 +120,8 @@ render(){
 				/>
 				<button>Submit Task</button>
 			</form>
-			<ListTask taskList={this.state.taskList} deleteTask={this.deleteTask}/>
+			<ListTask taskList={this.state.taskList} deleteTask={this.deleteTask} editTask={this.editTask}/>
+			<EditContainer edit={this.state.edit}/>	
 		</div>
 			)
 	}
