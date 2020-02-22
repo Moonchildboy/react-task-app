@@ -5,18 +5,20 @@ class EditContainer extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			edit:{
-				title:'hard code', //consider passing props
-				supporting_action:'',
-				status: 'in progress'
-			}
+			
+				title:'', //consider passing props
+				supporting_action:''
+			
 		}
 	}
 // lift state
+componentDidMount () {
+	this.updateState()
+}
 
 handleSubmit = (event) => {
 	event.preventDefault()
-	this.props.editTasks(this.state)//do I convert this to setState? 
+	this.props.updateTask(this.state)//do I convert this to setState? 
 }
 
 handleChange = (event) => {
@@ -25,23 +27,34 @@ handleChange = (event) => {
 	})
 }
 
+updateState = () => {
+	this.setState({
+	title: this.props.edit.title,
+	supporting_action: this.props.edit.supporting_action
+	})
+}
+
 
 render(){
-	console.log("this is props in the EditContainer", this.props);
+
+	console.log(this.state);
+
 		return(
 			<div>
 				<h1>Rendering EditContainer</h1>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<input 
 					type="text" 
+					name="title"
 					placeholder="title"
-					value={this.props.edit.title}
+					value={this.state.title}
 					onChange={this.handleChange}
 				/>
 				<input 
-					type="text-area" 
+					type="textarea" 
 					placeholder="supporting action"
-					value={this.props.edit.supporting_action}
+					name="supporting_action"
+					value={this.state.supporting_action}
 					onChange={this.handleChange}
 				/>	
 				<button>Update Task</button>

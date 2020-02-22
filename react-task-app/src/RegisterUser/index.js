@@ -47,9 +47,13 @@ render(){
 					onChange={this.handleChange}
 					placeholder="password"/>
 				</div>
+				<div>
+					<button>Register</button>
+				</div>
+				<div>	
+					<button onClick={this.props.switch}>or Login</button>
+				</div>
 				
-				<button>Register</button>
-				<button onClick={this.props.switch}>or Login</button>
 			</form>
 		</React.Fragment>
 		)

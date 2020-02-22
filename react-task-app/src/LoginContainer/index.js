@@ -45,6 +45,7 @@ class LoginContainer extends React.Component {
 						/>
 						
 				<button>Login</button>
+
 				<button onClick={this.props.switch}>Register?</button>
 
 				</form>

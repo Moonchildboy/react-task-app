@@ -9,8 +9,7 @@ class AuthContainer extends React.Component {
 			displayPage: true	// 
 		}
 	}
-	changeAuth = () => { // where to call this function?
-		
+	changeAuth = () => { 
 			this.setState({
 				displayPage: !this.state.displayPage
 			})

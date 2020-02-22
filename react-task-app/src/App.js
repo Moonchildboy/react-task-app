@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+
 import AuthContainer from './AuthContainer'
 import LoginContainer from './LoginContainer'
 import TaskContainer from './TaskContainer'
@@ -68,15 +68,36 @@ register = async (reg) => {
   }
 }
 
-
+logout = async (user) => {
+  console.log("hitting the logout function");
+  const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
+  try {
+    const registerResponse = await fetch(url, {
+      method:'GET',
+      credentials:'include',
+      // body:JSON.stringify(user),
+      // headers: {
+        // 'Content-Type': 'application/json'
+      // }
+    })
+    const registerJson = await registerResponse.json()
+  
+  } catch (err){
+      if (err) {
+        console.error(err);
+    }
+  }
+} 
 
   render(){
-      console.log();
+
     return (
       <div className="App">
-
+      <nav>
+        <button onClick={this.logout}>logout</button>
+       </nav>
         <AuthContainer login={this.login} register={this.register}/>  
-        <TaskContainer /> 
+        <TaskContainer />
 
       </div>
     )

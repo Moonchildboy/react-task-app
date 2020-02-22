@@ -1,0 +1,10 @@
+.taskDiv{
+  border: 2px solid orangered;
+  border-radius: 12px;
+  margin: 5px;
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+}

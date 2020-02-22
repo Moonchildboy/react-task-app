@@ -94,10 +94,36 @@ deleteTask = async (id) => {
 	}
 }
 editTask = (id) => {
-	const edit = this.state.taskList.find((task) => task.id === id) //
+	const edit = this.state.taskList.find((task) => task.id === id) 
+	console.log(edit);
 	this.setState({
+		idOFTaskToEdit: id,
 		edit:{...edit}
 	})
+}
+
+updateTask = async (updatedTask) => {
+	try{
+		
+		const updateResponse = await fetch(process.env.REACT_APP_API_URL + "/api/v1/task/" + this.state.idOFTaskToEdit, {
+		method: 'PUT',
+		credentials:'include',
+     	body:JSON.stringify(updatedTask),
+      	headers: {
+        'Content-Type': 'application/json'
+    	}
+	})
+		const updateJson = await updateResponse.json()
+		this.compileTasks()
+		if(updateResponse.status === 200){
+			this.setState({
+				idOFTaskToEdit: updateResponse
+			})
+		}
+
+	} catch(err){
+		console.log(err);
+	}
 }
 
 render(){	
@@ -121,7 +147,12 @@ render(){
 				<button>Submit Task</button>
 			</form>
 			<ListTask taskList={this.state.taskList} deleteTask={this.deleteTask} editTask={this.editTask}/>
-			<EditContainer edit={this.state.edit}/>	
+			{
+				this.state.idOFTaskToEdit === 0 ? 
+				null 
+				:
+				<EditContainer edit={this.state.edit} updateTask={this.updateTask}/>	
+			}
 		</div>
 			)
 	}
